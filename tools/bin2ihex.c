@@ -46,7 +46,7 @@ void print_intelhex(){
 	unsigned char addr[2];
 	for( i = 0 ;i<len ;i=i+2 ){
 		addr[0] = (i>>1) & 0xFF;
-		addr[1] = (i>>5) & 0xFF;
+		addr[1] = (i>>9) & 0xFF;
 		data = (unsigned char *)(ins_buff+i);
 		checksum = bycount + record_type + addr[0] + addr[1] + \
 					data[0] + data[1] + data[2] + data[3] + data[4] + \
