@@ -5,17 +5,18 @@
 BIN2IHEX ?= $(abspath ../tools/bin2ihex)
 # Pointers to various important tools in the toolchain.
 RISCV_PATH ?=/opt/riscv-none-gcc/7.2.0-2-20180111-2230/
+RISCV_OPENOCD ?= openocd
 
 FLASHXIP    := flashxip
 FLASH       := flash
 ITCM        := itcm
 IECM        := iecm
-DOWNLOAD    := flash
+DOWNLOAD    := itcm
 
 FTDI   := ftdi
 HBIRD  := hbird
 OLMX   := olmx
-OCDCFG := ${HBIRD}
+OCDCFG := ${FTDI}
 
 
 E203        := e203
@@ -45,26 +46,27 @@ help:
 	@echo "  HummingBird RISC-V Embedded Processor Software Development Kit "
 	@echo "  Makefile targets:"
 	@echo ""
-	@echo " software [PROGRAM=$(PROGRAM) BOARD=$(BOARD)]:"
+	@echo " software [PROGRAM=$(PROGRAM)]:"
 	@echo "    Build a software program to load with the"
 	@echo "    debugger."
 	@echo ""
-	@echo " upload [PROGRAM=$(PROGRAM) BOARD=$(BOARD)]:"
+	@echo " dasm [PROGRAM=$(PROGRAM)]:"
+	@echo "     Generates the dissassembly output of 'objdump -D' to stdout."
+	@echo ""
+	@echo " upload [PROGRAM=$(PROGRAM)]:"
 	@echo "    Launch OpenOCD to flash your program to the"
 	@echo "    on-board Flash."
 	@echo ""
-	@echo " run_openocd [BOARD=$(BOARD)]:"
-	@echo " run_gdb     [PROGRAM=$(PROGRAM) BOARD=$(BOARD)]:"
+	@echo " run_openocd :"
+	@echo ""
+	@echo " run_gdb     [PROGRAM=$(PROGRAM)]:"
 	@echo "     Launch OpenOCD or GDB seperately. Allows Ctrl-C to halt running"
 	@echo "     programs."
 	@echo ""
-	@echo " dasm [PROGRAM=$(BOARD)]:"
-	@echo "     Generates the dissassembly output of 'objdump -D' to stdout."
+	@echo " clean [PROGRAM=$(PROGRAM)]:"
+	@echo "     clean generated files."
 	@echo ""
-
-.PHONY: clean
-clean:
-
+	@echo " update the RISCV_PATH in Makefile first !!!!!!!!!!!!"
 
 RISCV_GCC     := $(abspath $(RISCV_PATH)/bin/riscv-none-embed-gcc)
 RISCV_GXX     := $(abspath $(RISCV_PATH)/bin/riscv-none-embed-g++)
@@ -77,17 +79,6 @@ RISCV_SIZE    := $(abspath $(RISCV_PATH)/bin/riscv-none-embed-size)
 PATH := $(abspath $(RISCV_PATH)/bin):$(PATH)
 
 
-# Builds and installs OpenOCD, which translates GDB into JTAG for debugging and
-# initializing the target.
-openocd_builddir := $(builddir)/openocd
-openocd_prefix := $(openocd_builddir)/prefix
-
-RISCV_OPENOCD_PATH ?= $(openocd_prefix)
-RISCV_OPENOCD ?= $(RISCV_OPENOCD_PATH)/bin/openocd
-
-openocd: $(RISCV_OPENOCD)
-
-
 
 #############################################################
 # This Section is for Software Compilation
@@ -95,12 +86,12 @@ openocd: $(RISCV_OPENOCD)
 PROGRAM_DIR = software/$(PROGRAM)
 PROGRAM_ELF = software/$(PROGRAM)/$(PROGRAM)
 
-.PHONY: software_clean
-software_clean:
+.PHONY: clean
+clean:
 	$(MAKE) -C $(PROGRAM_DIR) BSP_BASE=$(abspath hbird_e203_bsp)  DOWNLOAD=$(DOWNLOAD) clean
 
 .PHONY: software
-software: software_clean
+software: clean
 	$(MAKE) -C $(PROGRAM_DIR) SIZE=$(RISCV_SIZE) CC=$(RISCV_GCC) RISCV_ARCH=$(RISCV_ARCH) REPLACE_PRINTF=$(REPLACE_PRINTF)  NANO_PFLOAT=$(NANO_PFLOAT) USE_NANO=$(USE_NANO) DOWNLOAD=$(DOWNLOAD)  RISCV_ABI=$(RISCV_ABI) AR=$(RISCV_AR) OBJCOPY=$(RISCV_OBJCOPY) OBJDUMP=$(RISCV_OBJDUMP) BSP_BASE=$(abspath hbird_e203_bsp) 
 
 dasm: software
