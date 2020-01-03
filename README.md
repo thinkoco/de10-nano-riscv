@@ -19,7 +19,21 @@ A RISC-V SoC on Terasic DE10-NANO
 - [x] some timing check by signaltap and verdi simulation
 - [x] write the binary to itcam hex tools
 - [x] add led C code
+- [x] add hbird-sdk runtime (software not tested yet)
 
+## Build the itcm ram hex
+
+### 02.led_c
+
+    riscv-none-embed-gcc -march=rv32i -mabi=ilp32 -Tlink_itcm.lds  -nostartfiles -o led.elf start.S main.c
+	riscv-none-embed-objcopy -O binary led.elf led.bin
+	../../../tools/bin2ihex led.bin > led.hex
+
+### hbird-sdk
+
+    make dasm PROGRAM=hello_world
+
+here is the [riscv-none-gcc link](https://github.com/ilg-archived/riscv-none-gcc/releases/download/v7.2.0-2-20180110/gnu-mcu-eclipse-riscv-none-gcc-7.2.0-2-20180111-2230-centos64.tgz) 
 ## run simulation with verilator
    [brabect1's e200_opensource repo](https://github.com/brabect1/e200_opensource)
 
