@@ -20,6 +20,7 @@ A RISC-V SoC on Terasic DE10-NANO
 - [x] write the binary to itcam hex tools
 - [x] add led C code
 - [x] add hbird-sdk runtime (software not tested yet)
+- [x] add a simple C-based RISC-V simulator that can run led blink binary
 
 ## Build the itcm ram hex
 
