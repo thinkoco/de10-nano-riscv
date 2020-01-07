@@ -12,8 +12,8 @@ The C code shows that how the riscv32i core works in an easy way. Also, it can r
 
 ## build the simulaitor
 
-- [x] `gcc -o SimRV riscv.c -O3` (without debug informations)
-- [x] `gcc -o SimRV riscv.c -O3 -DDBUG` (with debug informations)
+- `gcc -o SimRV riscv.c -O3` (without debug informations)
+- `gcc -o SimRV riscv.c -O3 -DDEBUG` (with debug informations)
 
 ## run the binary
 
