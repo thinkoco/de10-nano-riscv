@@ -88,18 +88,34 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[32]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[33]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[34]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[35]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[8]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[9]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[10]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[11]
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_UART_RX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_UART_TX
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_JTAG_TCK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_JTAG_TMS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_JTAG_TDO
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_JTAG_TDI
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_QSPI_CS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_QSPI_SCK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_QSPI_DQ[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_QSPI_DQ[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_QSPI_DQ[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RISCV_QSPI_DQ[3]
+
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[0]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[1]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[2]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[3]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[4]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[5]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[6]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[7]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[8]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[9]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[10]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[11]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[12]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[13]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[14]
@@ -381,18 +397,35 @@ set_location_assignment PIN_Y11 -to GPIO_0[32]
 set_location_assignment PIN_AA26 -to GPIO_0[33]
 set_location_assignment PIN_AA13 -to GPIO_0[34]
 set_location_assignment PIN_AA11 -to GPIO_0[35]
-set_location_assignment PIN_Y15 -to GPIO_1[0]
-set_location_assignment PIN_AC24 -to GPIO_1[1]
-set_location_assignment PIN_AA15 -to GPIO_1[2]
-set_location_assignment PIN_AD26 -to GPIO_1[3]
-set_location_assignment PIN_AG28 -to GPIO_1[4]
-set_location_assignment PIN_AF28 -to GPIO_1[5]
-set_location_assignment PIN_AE25 -to GPIO_1[6]
-set_location_assignment PIN_AF27 -to GPIO_1[7]
-set_location_assignment PIN_AG26 -to GPIO_1[8]
-set_location_assignment PIN_AH27 -to GPIO_1[9]
-set_location_assignment PIN_AG25 -to GPIO_1[10]
-set_location_assignment PIN_AH26 -to GPIO_1[11]
+
+
+
+set_location_assignment PIN_Y15 -to RISCV_UART_RX
+set_location_assignment PIN_AC24 -to RISCV_UART_TX
+set_location_assignment PIN_AA15 -to RISCV_JTAG_TCK
+set_location_assignment PIN_AD26 -to RISCV_JTAG_TMS
+set_location_assignment PIN_AG28 -to RISCV_JTAG_TDO
+set_location_assignment PIN_AF28 -to RISCV_JTAG_TDI
+
+set_location_assignment PIN_AE25 -to RISCV_QSPI_CS
+set_location_assignment PIN_AF27 -to RISCV_QSPI_SCK
+set_location_assignment PIN_AG26 -to RISCV_QSPI_DQ[0]
+set_location_assignment PIN_AH27 -to RISCV_QSPI_DQ[1]
+set_location_assignment PIN_AG25 -to RISCV_QSPI_DQ[2]
+set_location_assignment PIN_AH26 -to RISCV_QSPI_DQ[3]
+
+#set_location_assignment PIN_Y15 -to GPIO_1[0]
+#set_location_assignment PIN_AC24 -to GPIO_1[1]
+#set_location_assignment PIN_AA15 -to GPIO_1[2]
+#set_location_assignment PIN_AD26 -to GPIO_1[3]
+#set_location_assignment PIN_AG28 -to GPIO_1[4]
+#set_location_assignment PIN_AF28 -to GPIO_1[5]
+#set_location_assignment PIN_AE25 -to GPIO_1[6]
+#set_location_assignment PIN_AF27 -to GPIO_1[7]
+#set_location_assignment PIN_AG26 -to GPIO_1[8]
+#set_location_assignment PIN_AH27 -to GPIO_1[9]
+#set_location_assignment PIN_AG25 -to GPIO_1[10]
+#set_location_assignment PIN_AH26 -to GPIO_1[11]
 set_location_assignment PIN_AH24 -to GPIO_1[12]
 set_location_assignment PIN_AF25 -to GPIO_1[13]
 set_location_assignment PIN_AG23 -to GPIO_1[14]
@@ -625,19 +658,13 @@ set_global_assignment -name QIP_FILE ip/riscv_ram64.qip
 set_global_assignment -name QIP_FILE ip/riscv_ram32.qip
 set_global_assignment -name QIP_FILE ip/riscv_pll.qip
 set_global_assignment -name SIP_FILE ip/riscv_pll.sip
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jd_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jd_2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jd_4
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jd_5
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to qspi_cs
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to qspi_dq[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to qspi_dq[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to qspi_dq[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to qspi_dq[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to qspi_dq
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to qspi_sck
 set_global_assignment -name ENABLE_SIGNALTAP OFF
 set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
 set_global_assignment -name SIGNALTAP_FILE stp1.stp
+
+
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name HEX_FILE software/led.hex
+
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

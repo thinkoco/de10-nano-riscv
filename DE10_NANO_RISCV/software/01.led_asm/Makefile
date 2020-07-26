@@ -25,7 +25,7 @@ led.bin: led.elf
 	$(OBJCOPY) -O binary $< $@
 
 led.elf: led_blink.o linker.ld Makefile
-	$(CC) $(LDFLAGS) -o $@ led_blink.o  > led.map
+	$(CC) $(LDFLAGS) -o $@ led_blink.o
 
 clean:
 	\rm -fr *.o *.hex *.elf *.dis *.bin *.coe *.map *.mif *.mem
