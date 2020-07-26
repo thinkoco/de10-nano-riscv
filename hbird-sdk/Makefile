@@ -105,7 +105,7 @@ ifeq ($(OCDCFG),${OLMX})
 OPENOCDCFG ?= hbird_e203_bsp/env/openocd_olmx.cfg
 endif
 ifeq ($(OCDCFG),${FTDI})
-OPENOCDCFG ?= hbird_e203_bsp/env/openocd_ftdi.cfg
+OPENOCDCFG ?= hbird_e203_bsp/env/openocd_e203.cfg
 endif
 ifeq ($(OCDCFG),${HBIRD})
 OPENOCDCFG ?= hbird_e203_bsp/env/openocd_hbird.cfg
