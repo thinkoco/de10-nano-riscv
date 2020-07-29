@@ -2,6 +2,9 @@
 
 A RISC-V SoC on Terasic DE10-NANO
 
+- [x] [DE10-Nano](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=167&No=1046)
+- [ ] [T-Core](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=218&No=1230) (As far as I known, terasic has ported the E203 to T-Core,which is a sweet board)
+
 ## Description
 
 1. Hbird E203 form [Nuclei Technology](https://github.com/SI-RISCV/e200_opensource)
@@ -19,8 +22,9 @@ A RISC-V SoC on Terasic DE10-NANO
 - [x] some timing check by signaltap and verdi simulation
 - [x] write the binary to itcam hex tools
 - [x] add led C code
-- [x] add hbird-sdk runtime (software not tested yet)
+- [x] add hbird-sdk runtime (testing)
 - [x] add a simple C-based RISC-V simulator that can run led blink binary
+- [x] update the ftdi script for e203 debug with ft2232hl tools (upload the binary to itcm, then run openocd and gdb)
 
 ## Build the itcm ram hex
 
@@ -31,9 +35,28 @@ A RISC-V SoC on Terasic DE10-NANO
 	../../../tools/bin2ihex led.bin > led.hex
 
 ### hbird-sdk
+```shell
+    cd de10-nano-riscv/hbird-sdk
+    export RISCV_OPENOCD= path to openocd (eg./opt/xpack-openocd-0.10.0-14/bin)
+    export RISCV_PATH= path to risc-v gcc path (eg./opt/riscv-none-gcc/7.2.0-2-20180111-2230)
+    make dasm PROGRAM=hello_world DOWNLOAD=itcm USE_NANO=1 NANO_PFLOAT=0
+    make upload PROGRAM=hello_world DOWNLOAD=itcm
+    make run_openocd PROGRAM=hello_world DOWNLOAD=itcm
+open a new terminal
+    cd de10-nano-riscv/hbird-sdk
+    export RISCV_OPENOCD= path to openocd (eg./opt/xpack-openocd-0.10.0-14/bin)
+    export RISCV_PATH= path to risc-v gcc path (eg./opt/riscv-none-gcc/7.2.0-2-20180111-2230)
+    make run_gdb PROGRAM=hello_world DWONLOAD=itcm
 
-    make dasm PROGRAM=hello_world
+(gdb)
+    break main
 
+    jump main
+    
+    l
+
+    n
+```
 here is the [riscv-none-gcc link](https://github.com/ilg-archived/riscv-none-gcc/releases/download/v7.2.0-2-20180110/gnu-mcu-eclipse-riscv-none-gcc-7.2.0-2-20180111-2230-centos64.tgz) 
 ## run simulation with verilator
    [brabect1's e200_opensource repo](https://github.com/brabect1/e200_opensource)
